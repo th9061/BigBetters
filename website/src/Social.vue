@@ -2,121 +2,38 @@
   <div id="social">
     <section class="section">
       <div class="container">
-        <h1 class="title">
-          SOCIAL PAGE
+        <h1 class="title has-text-centered">
+          Social
         </h1>
+
+        <!-- Alternative 2 column formatting -->
+        <!-- <div class="columns">
+          <div class="column is-half">
+            <GoalCard 
+              v-for="(bet, index) in group"
+              v-bind:key="bet.id"
+              v-bind="bet"
+            >
+            </GoalCard>
+          </div>
+          <div class="column is-half">
+            <GoalCard 
+              v-for="(bet, index) in group"
+              v-bind:key="bet.id"
+              v-bind="bet"
+            >
+            </GoalCard>
+          </div>
+        </div> -->
 
         <div class="column is-half is-offset-one-quarter">
           
-          <!-- Example media object-->
-          <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
-              </p>
-              <p>
-                <strong>John Smith</strong>
-              </p>                
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>Goal: </strong>Lorem ipsum dolor sit amet.
-                </p>
-                <p>
-                  <strong>Deadline: </strong>01/02/2018 <strong>Bet: </strong>$10 
-                </p>
-                <progress class="progress is-success" value="60" max="100">60%</progress>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                  </a>
-                </div>
-              </nav>
-            </div>
-          </article>
-
-          <!-- Example media object-->
-          <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
-              </p>
-              <p>
-                <strong>John Smith</strong>
-              </p>                
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>Goal: </strong>Lorem ipsum dolor sit amet.
-                </p>
-                <p>
-                  <strong>Deadline: </strong>01/02/2018 <strong>Bet: </strong>$10 
-                </p>
-                <progress class="progress is-success" value="60" max="100">60%</progress>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                  </a>
-                </div>
-              </nav>
-            </div>
-          </article>
-
-          <!-- Example media object-->
-          <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
-              </p>
-              <p>
-                <strong>John Smith</strong>
-              </p>                
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>Goal: </strong>Lorem ipsum dolor sit amet.
-                </p>
-                <p>
-                  <strong>Deadline: </strong>01/02/2018 <strong>Bet: </strong>$10 
-                </p>
-                <progress class="progress is-success" value="60" max="100">60%</progress>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                  </a>
-                </div>
-              </nav>
-            </div>
-          </article>
-
-
+          <GoalCard 
+            v-for="(bet, index) in group"
+            v-bind:key="bet.id"
+            v-bind="bet"
+          >
+          </GoalCard>
           
         </div>
       </div>
@@ -126,41 +43,58 @@
 </template>
 
 <script>
+import GoalCard from './GoalCard.vue'
+
 export default {
   name: 'social',
-  // data () {
-  //   return {
-  //     msg: 'Welcome to Your Vue.js App'
-  //   }
-  // }
+  components: {
+    GoalCard
+  },
+  data () {
+    return {
+      group: [
+        {
+          id: 1,
+          profilePicture: 'http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png',
+          name: 'Victor',
+          goal: 'Wake up early',
+          betAmount: 10,
+          deadline: 'Feb 30, 2018',
+          progress: 5,
+        },
+        {
+          id: 2,
+          profilePicture: 'http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png',
+          name: 'Jerry',
+          goal: 'Eat healthy',
+          betAmount: 5,
+          deadline: 'Feb 10, 2018',
+          progress: 60,
+        },
+        {
+          id: 3,
+          profilePicture: 'http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png',
+          name: 'Clara',
+          goal: '5k run 3 times/week',
+          betAmount: 50,
+          deadline: 'Aug 15, 2018',
+          progress: 80,
+        },
+        {
+          id: 4,
+          profilePicture: 'http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png',
+          name: 'Ray',
+          goal: 'Meal prep every Sunday',
+          betAmount: 20,
+          deadline: 'Mar 4, 2018',
+          progress: 45,
+        }
+      ],
+    }
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
