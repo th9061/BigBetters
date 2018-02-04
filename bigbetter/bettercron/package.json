@@ -5,6 +5,7 @@
   "author": "bigbetter <taihyun.lee@mail.utoronto.ca>",
   "main": "functions/__main__.js",
   "dependencies": {
+    "async": "^2.6.0",
     "lib": "^3.0.1"
   },
   "private": true,
