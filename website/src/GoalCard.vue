@@ -23,16 +23,6 @@
           </p>
           <progress class="progress is-success" :value="progress"  max="100"></progress>
         </div>
-        <!-- <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item">
-              <span class="icon is-small"><i class="fas fa-heart"></i></span>
-            </a>
-            <a class="level-item">
-              <span class="icon is-small"><i class="fas fa-reply"></i></span>
-            </a>
-          </div>
-        </nav> -->
       </div>
     </article>
 
@@ -42,18 +32,15 @@
 <script>
 export default {
   name: 'goalcard',
-  props: ['id', 'profilePicture', 'name', 'goal', 'betAmount', 'deadline', 'progress'],
-  data () {
-    return {
-      id: this.id,
-      profilePicture: this.profilePicture,
-      name: this.name,
-      goal: this.goal,
-      betAmount: this.betAmount,
-      deadline: this.deadline,
-      progress: this.progress,
-    }
-  }
+  props: [
+    'id', 
+    'profilePicture', 
+    'name',
+    'goal',
+    'betAmount',
+    'deadline',
+    'progress'
+  ]
 }
 </script>
 
@@ -72,3 +59,17 @@ export default {
 }
 
 </style>
+
+<!-- Buttons for liking and replying (extra) -->
+<!-- 
+<nav class="level is-mobile">
+  <div class="level-left">
+    <a class="level-item">
+      <span class="icon is-small"><i class="fas fa-heart"></i></span>
+    </a>
+    <a class="level-item">
+      <span class="icon is-small"><i class="fas fa-reply"></i></span>
+    </a>
+  </div>
+</nav> 
+-->

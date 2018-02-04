@@ -126,6 +126,27 @@ export default {
     // Set random encouragement
     let index = Math.floor(Math.random() * this.encouragements.length)
     this.encouragement = this.encouragements[index]
+
+    // Set user info
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log("Successful response from StdLib")
+        let slackResponse = JSON.parse(xmlhttp.responseText)
+        console.log(slackResponse)
+      }
+      else if (xmlhttp.status == 403 || xmlhttp.status == 404) {
+      }
+    }
+    // Get unique slack id for HTTP GET
+    let groupId = window.location.pathname.split('/')
+    console.log("Path names: " + groupId)
+    groupId = groupId[groupId.length - 1]
+    console.log("Current group id: " + groupId)
+
+    // Send request
+    xmlhttp.open('GET', 'https://bigbetter.lib.id/betterdb@dev/getgroup/' + groupId);
+    xmlhttp.send();
   },
 }
 </script>
