@@ -98,8 +98,8 @@ module.exports = (user, channel, text = '', command = {}, botToken = null, callb
               'fallback': 'Bet information',
               'author_name': group.users[user]['name'],
               'title': group.users[user]['bet']['description'],
-              'title_link': 'PLACEHOLDER',  
-              'text': '$' + group.users[user]['bet']['amount'],
+              'title_link': process.env.FRONTEND_URL + 'social/' + channel,  
+              'text': '$' + group.users[user]['bet']['amount'] + "\n" + process.env.FRONTEND_URL + 'social/' + channel,
               "ts": group.users[user]['bet']['deadline']/1000
             }]
           });
@@ -114,8 +114,8 @@ module.exports = (user, channel, text = '', command = {}, botToken = null, callb
             'fallback': 'Bet information',
             'author_name': group.users[user]['name'],
             'title': group.users[user]['bet']['description'],
-            'title_link': 'PLACEHOLDER',  
-            'text': '$' + group.users[user]['bet']['amount'],
+            'title_link': process.env.FRONTEND_URL + 'social/' + channel,  
+            'text': '$' + group.users[user]['bet']['amount'] + "\n" + process.env.FRONTEND_URL + 'social/' + channel,
             "ts": group.users[user]['bet']['deadline']/1000
           }]
         });

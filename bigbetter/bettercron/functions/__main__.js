@@ -16,13 +16,13 @@ module.exports = (context, callback) => {
 
         async.eachOf(group.users, (usr_val, usr_id, cb2) => { // Update the group
 
-          if (Object.keys(group.users[user]['bet']).length != 0) {
-            if (group.users[user]['bet']['deadline'] < Date.now()) { // deadline over
+          if (Object.keys(group.users[usr_id]['bet']).length != 0) {
+            if (group.users[usr_id]['bet']['deadline'] < Date.now()) { // deadline over
               flag = true;
-              if (!group.users[user]['bet']['complete']) {
-                group.users[user]['owing'] += group.users[user]['bet']['amount'];
+              if (!group.users[usr_id]['bet']['complete']) {
+                group.users[usr_id]['owing'] += group.users[usr_id]['bet']['amount'];
               }
-              group.users[user]['bet'] = {};
+              group.users[usr_id]['bet'] = {};
             }
           }
           cb2();
