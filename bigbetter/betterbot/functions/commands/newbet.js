@@ -108,7 +108,7 @@ module.exports = (user, channel, text = '', command = {}, botToken = null, callb
       } else { // Bet already exists
 
         callback(null, {
-          text: `You already have a current bet, <@${user}>`,
+          text: `You already have a current bet, <@${user}> ${channel}`,
           attachments: [{
             'color': 'good',
             'fallback': 'Bet information',

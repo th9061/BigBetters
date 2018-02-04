@@ -24,11 +24,11 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
     group = value;
     if (Object.keys(group).length != 0) { // If channel is being tracked
 
-      fetch_user(userID, (err, user_info) => {
+      fetch_user(user, (err, user_info) => {
         if (err) { callback(err); }
 
         var u_data = user_info.user;
-        group.users[userID] = {
+        group.users[user] = {
           'name': u_data.profile.real_name,
           'pic':u_data.profile.image_48,
           'bet': {},
@@ -37,21 +37,19 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
 
         lib.bigbetter.betterdb['@dev'].setgroup(channel, group, (err, value) => {
           if (err) { callback(err); }
-          welcome();
+          callback(null, {
+            text: `Hello <@${user}>, welcome to <#${channel}>! You have been added to this channel's betting group. :relaxed: ${JSON.stringify(group)}`
+          });
         });
 
       });
 
     } else {
-      welcome();
+      callback(null, {
+        text: `Hello <@${user}>, welcome to <#${channel}>! :relaxed: `
+      });
     }
 
   });
-
-  function welcome () {
-    callback(null, {
-      text: `Hello <@${user}>, welcome to <#${channel}>! :relaxed:`
-    });
-  }
 
 };
