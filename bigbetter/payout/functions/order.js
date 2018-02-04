@@ -37,18 +37,39 @@ module.exports = (skuId, stripeToken, shippingInfo = null, context, callback) =>
 
   }
 
-  stripe.orders.create(order, (err, result) => {
+  // stripe.orders.create(order, (err, result) => {
+  //
+  //   if (err) {
+  //     return callback(err);
+  //   }
+  //
+  //   stripe.orders.pay(result.id, {
+  //     source: stripeToken.id
+  //   }, (err, result) => {
+  //     return callback(err, result);
+  //   });
+  //
+  // });
 
-    if (err) {
-      return callback(err);
-    }
+    // stripe.accounts.create({
+    //     country: "US",
+    //     type: "custom"
+    // }).then(function(acct) {
+    //     // asynchronously called
+    //     console.log(acct);
+    // });
 
-    stripe.orders.pay(result.id, {
-      source: stripeToken.id
-    }, (err, result) => {
-      return callback(err, result);
+    stripe.charges.create({
+        amount: 1000,
+        currency: "usd",
+        source: "tok_visa",
+        destination: {
+            account: "acct_1BrOfmCM4YgBPFMb",
+        },
+    }, function (err, result) {//function(charge) {
+        // asynchronously called
+        // console.log(result);
+        return callback(err, result);
     });
-
-  });
 
 };

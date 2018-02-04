@@ -48,37 +48,75 @@ window.addEventListener('DOMContentLoaded', function() {
       var skuId = skuData[0];
       var skuPrice = parseInt(skuData[1]);
 
-      stripeHandler.open({
-        name: name,
-        description: description,
-        amount: skuPrice,
-        billingAddress: shippable,
-        shippingAddress: shippable,
-        locale: 'auto',
-        zipCode: true,
-        token: function (stripeToken, shippingInfo) {
-
-          startLoading();
-
-          lib(GLOBALS.SERVICE_PATH + '.order')({
-            skuId: skuId,
-            stripeToken: stripeToken,
-            shippingInfo: shippingInfo
-          }, function (err, result) {
+        lib(GLOBALS.SERVICE_PATH + '.deposit')({
+            // skuId: skuId,
+            // _amount: "3000",
+            // shippingInfo: null
+            operation: "testing",
+            arguments: {
+                testing: "lol"
+            }
+        }, function (err, result) {
 
             endLoading();
 
             if (err) {
-              alert(err.message);
-              return;
+                alert(err.message);
+                return;
             }
 
             completeOrder(name);
 
-          });
+        });
 
-        }
-      });
+      // stripeHandler.open({
+      //   name: name,
+      //   description: description,
+      //   amount: skuPrice,
+      //   billingAddress: shippable,
+      //   shippingAddress: shippable,
+      //   locale: 'auto',
+      //   zipCode: true,
+      //   token: function (stripeToken, shippingInfo) {
+      //
+      //     startLoading();
+      //
+      //     // lib(GLOBALS.SERVICE_PATH + '.order')({
+      //     //   skuId: skuId,
+      //     //   stripeToken: stripeToken,
+      //     //   shippingInfo: shippingInfo
+      //     // }, function (err, result) {
+      //     //
+      //     //   endLoading();
+      //     //
+      //     //   if (err) {
+      //     //     alert(err.message);
+      //     //     return;
+      //     //   }
+      //     //
+      //     //   completeOrder(name);
+      //     //
+      //     // });
+      //
+      //       lib(GLOBALS.SERVICE_PATH + '.reg_account')({
+      //           skuId: skuId,
+      //           stripeToken: stripeToken,
+      //           shippingInfo: shippingInfo
+      //       }, function (err, result) {
+      //
+      //           endLoading();
+      //
+      //           if (err) {
+      //               alert(err.message);
+      //               return;
+      //           }
+      //
+      //           completeOrder(name);
+      //
+      //       });
+      //
+      //   }
+      // });
 
     });
 
