@@ -18,10 +18,10 @@ const lib = require('lib')({token: process.env.STDLIB_TOKEN});
 */
 module.exports = (user, channel, text = '', command = {}, botToken = null, callback) => {
 
-  lib.bigbetter.betterdb['@dev'].getgroup(channel, (err, value) => {
+  lib.bigbetter.betterdb['@dev'].cleargroup(channel, (err, value) => {
 
     callback(null, {
-      text: `${JSON.stringify(value)}Hello, <@${user}>...\nYou said: ${text} on ${channel}`,
+      text: `Group Reset! for ${channel}`,
       attachments: [
         // You can customize your messages with attachments.
         // See https://api.slack.com/docs/message-attachments for more info.
